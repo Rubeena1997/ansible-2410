@@ -1,6 +1,7 @@
 ---
 - name: Setup Nginx server
   hosts: all
+  become: yes
 
   tasks:
   - name: Ensure System Updated
