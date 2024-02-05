@@ -13,6 +13,11 @@
       path: /home/ubuntu/g12
       state: directory
 
+  - name: Ensure directory created
+    file:
+      path: /opt/g12
+      state: directory
+
 - name: Update g2 server
   hosts: g2
 
