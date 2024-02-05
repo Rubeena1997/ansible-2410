@@ -9,6 +9,6 @@
       update_cache: yes
 
   - name: Ensure Nginx present
-    file:
+    apt:
       name: nginx
       state: present
