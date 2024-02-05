@@ -17,6 +17,7 @@
     file:
       path: /opt/g12
       state: directory
+    become: yes  
 
 - name: Update g2 server
   hosts: g2
