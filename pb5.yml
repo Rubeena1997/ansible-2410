@@ -7,18 +7,46 @@
   - name: Ensure System Updated
     apt:
       update_cache: yes
+    when: ansible_distribution == "Ubuntu"  
 
   - name: Ensure Nginx present
     apt:
       name: nginx
       state: present
+    when: ansible_distribution == "Ubuntu"  
 
   - name: Ensure Sample Page Removed
     file:
       state: absent
       path: /var/www/html/index.nginx-debian.html
+    when: ansible_distribution == "Ubuntu"  
+
+  - name: Ensure Apache present
+    yum:
+      name: httpd
+      state: present
+    when: ansible_distribution == "Amazon"
+
+  - name: Ensure Apache Started
+    service:
+      name: httpd
+      state: started
+    when: ansible_distribution == "Amazon"    
+
+  - name: Ensure Apache Enabled
+    service:
+      name: httpd
+      enabled: yes
+    when: ansible_distribution == "Amazon"  
+
+  - name: Ensure Git present
+    yum:
+      name: git
+      state: present
+    when: ansible_distribution == "Amazon"
 
   - name: Ensure App Deployed
     git:
       repo: https://github.com/ravi2krishna/devops-2410.git
       dest: /var/www/html     
+  
