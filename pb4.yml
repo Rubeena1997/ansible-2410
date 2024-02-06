@@ -4,6 +4,11 @@
   become: yes
 
   tasks:
+  - name: Ensure Sample Page Removed
+    file:
+      state: absent
+      path: /var/www/html/index.nginx-debian.html
+
   - name: Ensure App Deployed
     git:
       repo: https://github.com/ravi2krishna/devops-2410.git
