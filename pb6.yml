@@ -1,0 +1,15 @@
+---
+- name: Configure Custom Port
+  hosts: n3
+  become: yes
+
+  tasks:
+  - name: Ensure Config File Updated
+    copy:
+      src: default
+      dest: /etc/nginx/sites-enabled/default
+
+  - name: Ensure Nginx Restarted
+    service:
+      name: nginx
+      state: restarted   
