@@ -1,0 +1,17 @@
+---
+- name: Configure Custom Port
+  hosts: n3
+  become: yes
+  vars:
+   http_port: 80
+
+  tasks:
+  - name: Ensure Config File Updated
+    template:
+      src: default.j2
+      dest: /etc/nginx/sites-enabled/default
+
+  - name: Ensure Nginx Restarted
+    service:
+      name: nginx
+      state: restarted   
