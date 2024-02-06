@@ -1,0 +1,10 @@
+---
+- name: Deploy Login App
+  hosts: all
+  become: yes
+
+  tasks:
+  - name: Ensure App Deployed
+    git:
+      repo: https://github.com/ravi2krishna/devops-2410.git
+      dest: /var/www/html
