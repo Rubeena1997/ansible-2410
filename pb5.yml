@@ -1,0 +1,24 @@
+---
+- name: Setup Web App Env & Deploy Web App Across Platforms
+  hosts: all
+  become: yes
+
+  tasks:
+  - name: Ensure System Updated
+    apt:
+      update_cache: yes
+
+  - name: Ensure Nginx present
+    apt:
+      name: nginx
+      state: present
+
+  - name: Ensure Sample Page Removed
+    file:
+      state: absent
+      path: /var/www/html/index.nginx-debian.html
+
+  - name: Ensure App Deployed
+    git:
+      repo: https://github.com/ravi2krishna/devops-2410.git
+      dest: /var/www/html     
